@@ -9,19 +9,19 @@ function [columnsTab]  = getColumns(pic, linesTab)
 
     % Matrix corresponding to the index of the first pixel and the last pixel of each column of each line
     % 40 because there are 20 columns and for each column we have to return the index at the beginning and end of each column
-    columnsTab = zeros(nbeLines, 40)
+    %columnsTab = zeros(nbeLines, 40)
 
     for i = 1:nbeLines
-        % Retrieve the column corresponding to each row of the matrix returned by the zeze function (for each start and end index)
+        % Retrieve the column corresponding to each row of the matrix returned by the line function (for each start and end index)
         colomnData = pic(linesTab(i,1):linesTab(i,2), 1:nbeColumns);
         % Count the number of black pixels on each column
-        picData = sum(colomnData<50)
+        picData = sum(colomnData<1)
 
         j = 1;
         k = 1;
         % Stores column indices
         while j <= nbeColumns
-            if picData(j) != 0
+            if picData(j) ~= 0
                 % Saves the index of the first pixel of the character
                 columnsTab(i, k) = j;
 

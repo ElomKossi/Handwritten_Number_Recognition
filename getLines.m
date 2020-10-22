@@ -5,7 +5,7 @@ function [linesTab] = getLines(pic)
 
     % Count the black pixels
     % Replace by 1 all numbers that exceed 50 - vertical
-    picData = sum(pic<50,2);
+    picData = sum(pic<1,2);
 
     % Count the number of lines
     nbeLines = size(pic, 1);
@@ -18,7 +18,7 @@ function [linesTab] = getLines(pic)
 
     % Store black pixel line index
     while i <= nbeLines
-        if picData(i) != 0
+        if picData(i) ~= 0
             % Stock index
             % The index of the first black pixel
             linesTab(j, 1) = i;
