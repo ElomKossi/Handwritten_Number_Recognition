@@ -1,4 +1,4 @@
-function [] = showRectangle(linesTab, columnsTab)
+function [] = showRectangle(pic, linesTab, columnsTab)
 
     % On créé une fenêtre
     figure(); %3?
@@ -14,13 +14,13 @@ function [] = showRectangle(linesTab, columnsTab)
     for i=1:nbeLines
         for j=1:2:nbeColumns-1
             % retrieve the character
-            %retrieveCharacter = getLines(pic(linesTab(i, 1):linesTab(i, 2), columnsTab(i, j):columnsTab(i, j+1)))
+            retrieveCharacter = getLines(pic(linesTab(i, 1):linesTab(i, 2), columnsTab(i, j):columnsTab(i, j+1)))
 
             % retrieve character coordinates
             x = columnsTab(i, j);
-            y = linesTab(i, 1);
-            u = columnsTab(i, j+1)-x;
-            v = linesTab(i, 2)-y;
+            y = retrieveCharacter(1, 1) + linesTab(i, 1);
+            u = columnsTab(i, j+1) - x;
+            v = retrieveCharacter(1, 2) + linesTab(i, 1) - y;
 
             rectangle('position',[x,y,u,v],'Edgecolor','g')
             %rectangle('position',[x,y,u,v],'Edgecolor','r')
