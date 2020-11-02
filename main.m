@@ -1,7 +1,10 @@
-% Load the image
-pkg load image
-img = imread('app.tif');
-pic = im2bw(img, im2double(uint8(128)));
+m = 5;
+n = 5;
+test = true;
+% -----------------------------------------------------------------------------------------
+% Test
+
+pic = imread('test.tif');
 
 % Determine the lines of the image
 linesTab = getLines(pic);
@@ -12,4 +15,11 @@ columnsTab  = getColumns(pic, linesTab)
 % Determines the coordinates of each character
 coordinatesTab = buildRectangle(pic, linesTab, columnsTab)
 
+% Shox image with rectangle
 showRectangle(pic, linesTab, columnsTab)
+
+% Get densities
+densities = getDensities(pic, linesTab, columnsTab, coordinatesTab, m, n)
+
+% Load training data
+trainData=load('densities.mat','-ascii');

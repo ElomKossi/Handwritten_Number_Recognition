@@ -5,3 +5,5 @@ Apprehend the different steps of a pattern recognition system from pre-processin
 
 ## Steps:
 ### Pre-processing: Locations and extraction of handwritten numbers.
+### Classification Algorithms
+#### 1. Densities + K-Nearest Neighbors

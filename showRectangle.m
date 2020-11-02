@@ -3,7 +3,6 @@ function [] = showRectangle(pic, linesTab, columnsTab)
     % On créé une fenêtre
     figure(); %3?
     % On y affiche l'image
-    pic = imread('app.tif');
     imshow(pic);
     % Garde l'image actuelle afin d'y ajouter les rectangles
     hold on;
@@ -23,7 +22,7 @@ function [] = showRectangle(pic, linesTab, columnsTab)
             v = retrieveCharacter(1, 2) + linesTab(i, 1) - y;
 
             rectangle('position',[x,y,u,v],'Edgecolor','g')
-            %rectangle('position',[x,y,u,v],'Edgecolor','r')
+            % rectangle('position',[x y u v],'Edgecolor','r')
 
         end
     end
