@@ -1,4 +1,4 @@
-function [classes] = getKNN(maxK, densities, trainData)
+function [KNNClasses, KNN] = getKNN(maxK, densities, trainData)
 
     % densities = test data
 
@@ -6,7 +6,7 @@ function [classes] = getKNN(maxK, densities, trainData)
     trainDataLine = size(trainData, 1);
     distances=zeros(densitiesLine, trainDataLine);
     KNNClasses=zeros(densitiesLine, maxK);
-    KPPV=zeros(nbLignes,1);
+    KNN=zeros(densitiesLine, 1);
 
     % Calculation of the distance from the point to be classified,
     % representing the shape to be recognized, to all the points of the learning base.
@@ -28,5 +28,14 @@ function [classes] = getKNN(maxK, densities, trainData)
     end
 
     % Search for the most present K
+    for i=1:densitiesLine
+        %  returns the same data as in KNNClasses, but with no repetitions.
+        uniqueTab = unique(KNNClasses(i, :));
+        % Counts each time a number present in uniqueTab is present in the current line
+        nbePresent = histc(KNNClasses(i, :), uniqueTab);
+        [~,index] = max(nbePresent);
+        % the most present K
+        KNN(i) = uniqueTab(index);
+    end
 
 end
