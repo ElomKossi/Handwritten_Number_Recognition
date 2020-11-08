@@ -14,10 +14,10 @@ function [coordinates] = buildRectangle(pic, linesTab, columnsTab)
             retrieveCharacter = getLines(pic(linesTab(i, 1):linesTab(i, 2), columnsTab(i, j):columnsTab(i, j+1)))
 
             % retrieve character coordinates
-            coordinates(k, 1) = columnsTab(i, j); % Top Left
-            coordinates(k, 2) = retrieveCharacter(1, 1) + linesTab(i, 1);
-            coordinates(k, 3) = columnsTab(i, j+1) - coordinates(k, 1); % Bottom Right
-            coordinates(k, 4) = retrieveCharacter(1, 2) + linesTab(i, 1) - coordinates(k, 2);
+            coordinates(k, 1) = columnsTab(i, j); % top left line
+            coordinates(k, 2) = retrieveCharacter(1, 1) + linesTab(i, 1)-1; %top left column
+            coordinates(k, 3) = columnsTab(i, j+1) - coordinates(k, 1); % height
+            coordinates(k, 4) = retrieveCharacter(1, 2) + linesTab(i, 1) - coordinates(k, 2)-2; % width
 
             k = k+1;
         end

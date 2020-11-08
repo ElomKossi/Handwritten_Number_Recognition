@@ -17,7 +17,7 @@ function [] = trainingKNN(m, n)
     coordinatesTab = buildRectangle(pic, linesTab, columnsTab)
 
     % Show image with rectangle
-    % showRectangle(pic, linesTab, columnsTab)
+    % showRectangle(pic, coordinatesTab)
 
     % Get densities
     densities = getDensities(pic, linesTab, columnsTab, coordinatesTab, m, n)

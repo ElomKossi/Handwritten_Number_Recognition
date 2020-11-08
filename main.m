@@ -1,5 +1,7 @@
+% Constants
 m = 5;
 n = 5;
+maxK = 5
 test = true;
 % -----------------------------------------------------------------------------------------
 % Test
@@ -16,7 +18,7 @@ columnsTab  = getColumns(pic, linesTab)
 coordinatesTab = buildRectangle(pic, linesTab, columnsTab)
 
 % Shox image with rectangle
-showRectangle(pic, linesTab, columnsTab)
+showRectangle(pic, coordinatesTab)
 
 % Get densities
 densities = getDensities(pic, linesTab, columnsTab, coordinatesTab, m, n)
