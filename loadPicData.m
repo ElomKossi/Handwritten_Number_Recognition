@@ -7,10 +7,10 @@ function [linesTab, columnsTab, coordinatesTab] = loadPicData(pic)
     linesTab = getLines(pic);
 
     % Determine for each row the columns
-    columnsTab  = getColumns(pic, linesTab)
+    columnsTab  = getColumns(pic, linesTab);
 
     % Determines the coordinates of each character
-    coordinatesTab = buildRectangle(pic, linesTab, columnsTab)
+    coordinatesTab = buildRectangle(pic, linesTab, columnsTab);
 
     % Show image with rectangle
     % showRectangle(pic, coordinatesTab)

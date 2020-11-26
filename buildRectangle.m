@@ -4,14 +4,14 @@ function [coordinates] = buildRectangle(pic, linesTab, columnsTab)
 
     nbeLines = size(linesTab, 1);
     nbeColumns = size(columnsTab, 2);
-    coordinates = zeros(200, 4);
+    %coordinates = zeros(200, 4);
 
     % For each number we determine the sides of the rectangle enclosing it.
     k = 1;
     for i=1:nbeLines
         for j=1:2:nbeColumns-1
             % retrieve the character
-            retrieveCharacter = getLines(pic(linesTab(i, 1):linesTab(i, 2), columnsTab(i, j):columnsTab(i, j+1)))
+            retrieveCharacter = getLines(pic(linesTab(i, 1):linesTab(i, 2), columnsTab(i, j):columnsTab(i, j+1)));
 
             % retrieve character coordinates
             coordinates(k, 1) = columnsTab(i, j); % top left line

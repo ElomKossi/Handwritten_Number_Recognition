@@ -15,7 +15,7 @@ function [columnsTab]  = getColumns(pic, linesTab)
         % Retrieve the column corresponding to each row of the matrix returned by the line function (for each start and end index)
         colomnData = pic(linesTab(i,1):linesTab(i,2), 1:nbeColumns);
         % Count the number of black pixels on each column
-        picData = sum(colomnData<1)
+        picData = sum(colomnData<1);
 
         j = 1;
         k = 1;

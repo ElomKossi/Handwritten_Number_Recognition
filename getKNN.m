@@ -1,4 +1,5 @@
-function [KNNClasses, KNN] = getKNN(maxK, densities, trainData)
+%function [KNNClasses, KNN] = getKNN(maxK, densities, trainData)
+function [KNNClasses] = getKNN(maxK, densities, trainData)
 
     % densities = test data
 
@@ -24,18 +25,19 @@ function [KNNClasses, KNN] = getKNN(maxK, densities, trainData)
         for j=1:maxK
             [~, index] = min(distances(i, :));
             KNNClasses(i,j)=floor((index-1)/20);
+            distances(i,index) = 1000;
         end
     end
 
-    % Search for the most present K
-    for i=1:densitiesLine
-        %  returns the same data as in KNNClasses, but with no repetitions.
-        uniqueTab = unique(KNNClasses(i, :));
-        % Counts each time a number present in uniqueTab is present in the current line
-        nbePresent = histc(KNNClasses(i, :), uniqueTab);
-        [~,index] = max(nbePresent);
-        % the most present K
-        KNN(i) = uniqueTab(index);
-    end
+    % % Search for the most present K
+    % for i=1:densitiesLine
+    %     %  returns the same data as in KNNClasses, but with no repetitions.
+    %     uniqueTab = round(unique(KNNClasses(i, :)));
+    %     % Counts each time a number present in uniqueTab is present in the current line
+    %     nbePresent = histc(KNNClasses(i, :), uniqueTab);
+    %     [~,index] = max(nbePresent);
+    %     % the most present K
+    %     KNN(i) = uniqueTab(index);
+    % end
 
 end
