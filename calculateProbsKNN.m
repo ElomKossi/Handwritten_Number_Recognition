@@ -1,14 +1,15 @@
-function [probs] = calculateProbsKNN(KNNClasses, maxK)
+function [probs] = calculateProbsKNN(KNN,  k, densities)
 
     % Calculation of the probability that each number belongs to each of the 10 classes
 
-    line = size(KNNClasses, 1);
-    probs=zeros(100, 10);
+    sizeDensities = size(densities(1));
+    probs=zeros(sizeDensities, 10);
 
-    for i=1:line
-        % Counts the number of values in  that are within each specified bin range (0:9)
-        N = histc(KNNClasses(i,:), 0:9);
-        probs(i, :) = N./maxK;
+    for i=1:sizeDensities
+        for j=1:10
+            % Counts the number of values in  that are within each specified bin range (0:9)
+            probs(i, j) = (histc(KNN(:), j))/k;
+        end
     end
 
 end
