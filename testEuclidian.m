@@ -26,6 +26,6 @@ function prob = testEuclidian(img, centers, d)
 	%disp("distances = ");
 	%disp(distances)
 
-	prob = computeProbabilities(distances);
+	prob = calculateProbsEuclidian(distances);
 
 end
