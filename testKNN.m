@@ -19,8 +19,5 @@ function [probs] = testKNN(pic, m, n, k)
     % KNN recovery
     %[KNNClasses, KNN] = getKNN(k, densities, trainData)
     probs = getKNN(k, densities_3d, trainData_3d, m, n);
-
-    % Calculation of probabilities
-    %probs2 = calculateProbsKNN(KNN, k);
-    %saveToFile('probaKNN.mat', probs2);
+    saveToFile('probaKNN.mat', probs);
 end

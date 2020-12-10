@@ -27,5 +27,5 @@ function prob = testEuclidian(img, centers, d)
 	%disp(distances)
 
 	prob = calculateProbsEuclidian(distances);
-
+	saveToFile('probaEuclidian.mat', prob);
 end

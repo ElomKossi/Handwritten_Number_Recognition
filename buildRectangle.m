@@ -4,7 +4,6 @@ function [coordinates] = buildRectangle(pic, linesTab, columnsTab)
 
     nbeLines = size(linesTab, 1);
     nbeColumns = size(columnsTab, 2);
-    %coordinates = zeros(200, 4);
 
     % For each number we determine the sides of the rectangle enclosing it.
     k = 1;
@@ -22,5 +21,4 @@ function [coordinates] = buildRectangle(pic, linesTab, columnsTab)
             k = k+1;
         end
     end
-
 end

@@ -1,4 +1,4 @@
-function [] = showRectangle(pic, coordinatesTab)
+function [] = showRectangle(pic, rectangleCoords)
 
     % On créé une fenêtre
     figure(); %3?
@@ -7,16 +7,16 @@ function [] = showRectangle(pic, coordinatesTab)
     % Garde l'image actuelle afin d'y ajouter les rectangles
     hold on;
 
-    nbRectangles = size(coordinatesTab, 1);
+    nbRectangles = size(rectangleCoords, 1);
 
     % for each rectangle
     for i=1:nbRectangles
-        x = coordinatesTab(i, 1);
-        y = coordinatesTab(i, 2);
-        u = coordinatesTab(i, 3);
-        v = coordinatesTab(i, 4);
+        x = rectangleCoords(i, 1);
+        y = rectangleCoords(i, 2);
+        u = rectangleCoords(i, 3);
+        v = rectangleCoords(i, 4);
 
-        rectangle('position',[x,y,u,v],'Edgecolor','g');
+        rectangle('position',[x,y,u,v],'Edgecolor','r');
     end
 
     hold off;
