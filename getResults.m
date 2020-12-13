@@ -12,7 +12,7 @@ function [rates, sol] = getResults(prob)
 	rates = zeros(1, 10);
 
 	for i=1:nbRectangles
-		
+
 		maxProb = 0;
 		indexMax = 1;
 

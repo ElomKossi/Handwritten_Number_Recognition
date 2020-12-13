@@ -7,12 +7,12 @@ trainingImg = im2bw(imread('app.tif'), im2double(uint8(128)));
 testingImg = imread('test.tif');
 
 
-rates = zeros(10, 10);
+% rates = zeros(10, 10);
 
 i = 1;
 
-M = N = 1:5
-K = 1:5
+M = N = 1:1:15
+K = 1:1:15
 
 for m = M
     for k = K
@@ -28,43 +28,44 @@ for m = M
         prob = testKNN(testingImg, m, m, k);
         disp("\t Test termine")
 
-
-
         [r, sol] = getResults(prob);
 
-        rates(i, :) = r;
+        rates(k, :, m) = r;
         i += 1;
     end
 end
 
 disp("\t Préparation et affichage des données")
 
-globalAccuracy = zeros(5, 1);
-
-for j=1:5
-	globalAccuracy(j, 1) = mean(rates(j, :));
+for m = M
+    for k = K
+	    globalAccuracy(k, m) = mean(rates(k, :, m));
+	    %globalAccuracy(k, m) = mean(rates(k, m));
+    end
 end
 
-figure
-plot3(M, K, globalAccuracy);
+[X,Y] = meshgrid(0.5:1:15);
+figure, surf(X, Y, globalAccuracy);
 xlabel("m/n");
 ylabel("k");
 zlabel("Taux de reconnaissance global");
 title("Taux de reconnaissance global en fonction de m/n et k");
 
-%figure
+figure
 
-%for j=1:5
+for m = M
+    for k = K
 
-%	individualRate = rates(:, j);
+	individualRate = rates(:, j);
 
-%	subplot(5, 2, j);
-%	plot3(M, K, individualRate);
-%    xlabel("m/n");
-%    ylabel("k");
-%    zlabel("Taux de reconnaissance global");
-%	title(["Taux de reconnaissance du chiffre " num2str(j-1)])
-%	ylim([0 100])
-%end
+	subplot(5, 2, j);
+	plot3(M, K, individualRate);
+    xlabel("m/n");
+    ylabel("k");
+    zlabel("Taux de reconnaissance global");
+	title(["Taux de reconnaissance du chiffre " num2str(j-1)])
+	ylim([0 100])
+end
+end
 
 disp("\t Affichage des données terminée")
